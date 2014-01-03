@@ -1,4 +1,6 @@
 Datasetlabeler::Application.routes.draw do
+  resources :projects
+
   root :to => "home#index"
   resources :users, :only => [:index, :show, :edit, :update ]
   get '/auth/:provider/callback' => 'sessions#create'

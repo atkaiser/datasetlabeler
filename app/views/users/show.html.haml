@@ -3,3 +3,7 @@
   User: #{@user.name}
 %p
   Email: #{@user.email if @user.email}
+- @projects.each do |p|
+  = link_to p.name, project_path(p.id) 
+%p
+  = link_to "New Project", new_project_id_path(@user.id)

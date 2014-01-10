@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   attr_accessible :provider, :uid, :name, :email
   validates_presence_of :name
   has_many :projects
-  has_many :datum
+  has_many :data
 
   def self.create_with_omniauth(auth)
     create! do |user|

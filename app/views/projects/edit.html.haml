@@ -11,5 +11,8 @@
   .field
     = f.label :name
     = f.text_field :name
+  .field
+    = f.label :file
+    = f.file_field :data, multiple: true
   .actions
     = f.submit 'Save'

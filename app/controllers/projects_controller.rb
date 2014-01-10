@@ -9,6 +9,7 @@ class ProjectsController < ApplicationController
 
   # GET /projects/1
   def show
+    @data = @project.data
   end
 
   # GET /projects/new
@@ -36,6 +37,13 @@ class ProjectsController < ApplicationController
   # PATCH/PUT /projects/1
   def update
     @project.name = params[:project][:name]
+    if params[:project][:data]
+      params[:project][:data].each do |d|
+        datum_hash = {:name => d.original_filename, :project_id => @project.id, :photo => d}
+        d = Datum.new(datum_hash)
+        d.save
+      end
+    end
     if @project.save
       redirect_to @project, notice: 'Project was successfully updated.'
     else
